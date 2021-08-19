@@ -1,7 +1,0 @@
-- "left reads":
-  - "/hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/clean/SRR8209080_R1.clean.fastq"
-  "number": !!int "1"
-  "orientation": "fr"
-  "right reads":
-  - "/hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/clean/SRR8209080_R2.clean.fastq"
-  "type": "paired-end"
