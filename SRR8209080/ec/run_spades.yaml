@@ -1,0 +1,70 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_start
+- STAGE: Read error correction
+  args:
+  - /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec/corrected/configs/config.info
+  config_dir: corrected
+  del_after:
+  - tmp/hammer_1lby3_0t
+  output_files:
+  - /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec/corrected/corrected.yaml
+  path: /sysapps/cluster/software/Anaconda/2.3.0Linux-x86_64/envs/spades/bin/spades-hammer
+  short_name: ec_runtool
+- STAGE: corrected reads compression
+  args:
+  - /sysapps/cluster/software/Anaconda/2.3.0Linux-x86_64/envs/spades/share/spades/spades_pipeline/scripts/compress_all.py
+  - --input_file
+  - /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec/corrected/corrected.yaml
+  - --ext_python_modules_home
+  - /sysapps/cluster/software/Anaconda/2.3.0Linux-x86_64/envs/spades/share/spades
+  - --max_threads
+  - '8'
+  - --output_dir
+  - /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec/corrected
+  - --gzip_output
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /sysapps/cluster/software/Anaconda/2.3.0Linux-x86_64/envs/spades/bin/python
+  short_name: ec_compress
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /sysapps/cluster/software/Anaconda/2.3.0Linux-x86_64/envs/spades/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec/scaffolds.fasta
+  - --misc_dir
+  - /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /sysapps/cluster/software/Anaconda/2.3.0Linux-x86_64/envs/spades/bin/python
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  output_files: []
+  path: 'true'
+  short_name: terminate

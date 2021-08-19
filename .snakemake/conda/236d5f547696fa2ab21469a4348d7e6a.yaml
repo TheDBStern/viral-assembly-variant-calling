@@ -1,0 +1,7 @@
+channels:
+- conda-forge
+- bioconda
+- defaults
+- r
+dependencies:
+ - haphpipe=1.0.3-0

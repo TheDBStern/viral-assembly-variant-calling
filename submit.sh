@@ -2,20 +2,26 @@
 
 # submit this file with:  qsub submit.sh
 
+# Job Name
+#$ -N test_trim
+
 # run from current working directory
 #$ -cwd
 
 #$ -m be
-#$ -M brendan.jeffrey@nih.gov
+#$ -M david.stern@nih.gov
 
 # log dirs
 #$ -e ./log/submit_log/
 #$ -o ./log/submit_log/
 
-module load snakemake || exit 1
+
+snake_log=$PWD/log/snake_log
+mkdir -p $snake_log
 
 # create qsub command
-sbcmd="qsub -l h_vmem={cluster.mem} "
+sbcmd="qsub -l {cluster.mem} -pe threaded {cluster.threads} -e $snake_log -o $snake_log "
 
-# snake01_reads
-snakemake --snakefile snakefile.smk --jobs 100 --rerun-incomplete --keep-going --cluster-config cluster.yaml --cluster "$sbcmd" --latency-wait 120 all
+module load snakemake
+
+snakemake --use-conda --jobs 100 --rerun-incomplete --keep-going --cluster-config cluster.yaml --cluster "$sbcmd" --latency-wait 120 all

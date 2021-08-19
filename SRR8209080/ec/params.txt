@@ -1,0 +1,31 @@
+Command line: /sysapps/cluster/software/Anaconda/2.3.0Linux-x86_64/envs/spades/bin/spades.py	--only-error-correction	-t	8	-1	/hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/clean/SRR8209080_R1.clean.fastq	-2	/hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/clean/SRR8209080_R2.clean.fastq	-o	/hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec	
+
+System information:
+  SPAdes version: 3.15.2
+  Python version: 3.9.4
+  OS: Linux-3.10.0-1160.11.1.el7.x86_64-x86_64-with-glibc2.17
+
+Output dir: /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec
+Mode: ONLY read error correction (without assembling)
+Debug mode is turned OFF
+
+Dataset parameters:
+  Standard mode
+  For multi-cell/isolate data we recommend to use '--isolate' option; for single-cell MDA data use '--sc'; for metagenomic data use '--meta'; for RNA-Seq use '--rna'.
+  Reads:
+    Library number: 1, library type: paired-end
+      orientation: fr
+      left reads: ['/hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/clean/SRR8209080_R1.clean.fastq']
+      right reads: ['/hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/clean/SRR8209080_R2.clean.fastq']
+      interlaced reads: not specified
+      single reads: not specified
+      merged reads: not specified
+Read error correction parameters:
+  Iterations: 1
+  PHRED offset will be auto-detected
+  Corrected reads will be compressed
+Other parameters:
+  Dir for temp files: /hpcdata/bcbb/stern/pipelines/viral_assembly_variant_calling/SRR8209080/ec/tmp
+  Threads: 8
+  Memory limit (in Gb): 250
+

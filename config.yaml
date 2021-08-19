@@ -1,19 +1,14 @@
-## Notes:
-
-samples: samples.csv
-
-kraken_db:
-  # path to db
-  name: /hpcdata/bio_data/kraken_db/minikraken_8GB_20200312
+#names of sample directories containing the fastq directories
+samples:
+    ["SRR8209080"]
 
 params:
-  trimmomatic:
-    pe:
-      trimmer:
-        # See trimmomatic manual for adding additional options, e.g. for adapter trimming.
-        - "LEADING:3"
-        - "TRAILING:3"
-        - "SLIDINGWINDOW:4:15"
-        - "MINLEN:36"
+    adapters: "ref/adapters.fa"
+    bbduk: "ktrim=r k=23 mink=11 hdist=1 qtrim=w trimq=10 minlen=36 entropy=0.01 entropywindow=50 entropyk=5 tbo"
+    #trinity: "--max_memory 100G"
+    #blast_db: "/hpcdata/bcbb/stern/databases/mouse_protein_db.faa"
+    #pfam_db: "/hpcdata/bcbb/stern/databases/Pfam-A.hmm"
 
-    illumina_clip: data/TruSeq3-PE.fa:2:30:10
+threads:
+    bbduk: 16
+    spades_ec: 16
