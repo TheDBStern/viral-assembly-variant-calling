@@ -1,0 +1,19 @@
+## Notes:
+
+samples: samples.csv
+
+kraken_db:
+  # path to db
+  name: /hpcdata/bio_data/kraken_db/minikraken_8GB_20200312
+
+params:
+  trimmomatic:
+    pe:
+      trimmer:
+        # See trimmomatic manual for adding additional options, e.g. for adapter trimming.
+        - "LEADING:3"
+        - "TRAILING:3"
+        - "SLIDINGWINDOW:4:15"
+        - "MINLEN:36"
+
+    illumina_clip: data/TruSeq3-PE.fa:2:30:10

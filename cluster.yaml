@@ -1,0 +1,12 @@
+__default__:
+  n: 2
+  threads: 2
+  queue: short
+  mem: 8G
+  log: '{log}'
+
+trim_reads_pe:
+  mem: 24G
+
+kraken:
+  mem: 24G
