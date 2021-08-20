@@ -6,7 +6,8 @@ rule consiter:
     in1="data/{sample}/ec/{sample}_R1.clean.ec.fastq.gz",
     in2="data/{sample}/ec/{sample}_R2.clean.ec.fastq.gz"
   output:
-    "data/{sample}/{sample}.consensus.fa"
+    out1="data/{sample}/{sample}.consensus.fa",
+    out2="data/{sample}/{sample}.bt2.rmdup.bam"
   params:
     ref=config["params"]["ref"],
     consiter=config["params"]["consiter"]

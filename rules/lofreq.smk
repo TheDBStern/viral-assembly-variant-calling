@@ -15,6 +15,8 @@ rule lofreq:
       module load lofreq/2.1.3.1
       module load samtools/1.9-goolf-1.7.20
 
+      mkdir data/{wildcards.sample}/lofreq
+      
       samtools view \
             -b \
             -T {input} \
