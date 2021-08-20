@@ -13,10 +13,11 @@ configfile: "config.yaml"
 
 rule all:
   input:
-    expand("data/{sample}/{sample}.consensus.fa", sample=config["samples"])
+    expand("data/{sample}/{sample}.lofreq.vcf", sample=config["samples"])
 
 ##### load rules #####
 
 include: "rules/bbduk.smk"
 include: "rules/spades_ec.smk"
 include: "rules/consiter.smk"
+include: "rules/lofreq.smk"

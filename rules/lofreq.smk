@@ -1,16 +1,11 @@
 shell.prefix("set -eo pipefail; ")
 
 
-rule consiter:
+rule lofreq:
   input:
-    in1="data/{sample}/ec/{sample}_R1.clean.ec.fastq.gz",
-    in2="data/{sample}/ec/{sample}_R2.clean.ec.fastq.gz"
-  output:
     "data/{sample}/{sample}.consensus.fa"
-  params:
-    ref=config["params"]["ref"],
-    consiter=config["params"]["consiter"]
-  threads: config["threads"]["consiter"]
+  output:
+    "data/{sample}/{sample}.lofreq.vcf"
   log:
     "data/{sample}/logs/lofreq.log"
 
@@ -22,18 +17,29 @@ rule consiter:
 
       samtools view \
             -b \
-            -T ref/HIV_B.K03455.HXB2.fasta \
-            SRR8209080/SRR8209080.smblast.bt2.bam \
+            -T {input} \
+            data/{wildcards.sample}/{wildcards.sample}.bt2.rmdup.bam \
         | lofreq viterbi \
-            -f ref/HIV_B.K03455.HXB2.fasta \
+            -f {input} \
             - \
         | samtools sort \
             - \
         | lofreq indelqual \
-            -f ref/HIV_B.K03455.HXB2.fasta \
+            -f {input} \
             --dindel \
             - \
-        > SRR8209080/SRR8209080.lofreq.bam
+        > data/{wildcards.sample}/lofreq/{wildcards.sample}.lofreq.bam
 
-              > {log} 2>&1
+        lofreq alnqual \
+            -b \
+            data/{wildcards.sample}/lofreq/{wildcards.sample}.lofreq.bam \
+            {input} \
+        > data/{wildcards.sample}/lofreq/{wildcards.sample}.lofreq.qual.bam
+
+        samtools index data/{wildcards.sample}/lofreq/{wildcards.sample}.lofreq.qual.bam
+
+        lofreq call \
+            -f {input} \
+            -o {output} \
+            data/{wildcards.sample}/lofreq/{wildcards.sample}.lofreq.qual.bam
       """
