@@ -1,4 +1,8 @@
 # Viral assembly and variant calling
+
+download this repository with 
+`git clone --recursive https://github.niaid.nih.gov/sterndb/viral-assembly-variant-calling`
+
 Snakemake pipeline to assemble a viral consensus sequence, and optionally call SNPs and haplotypes.
 Runs on NIAID Locus HPC
 
