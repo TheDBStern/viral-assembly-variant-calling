@@ -3,10 +3,10 @@ shell.prefix("set -eo pipefail; ")
 rule bbduk:
   input:
   output:
-    out1="{sample}/clean/{sample}_R1.clean.fastq",
-    out2="{sample}/clean/{sample}_R2.clean.fastq"
+    out1="data/{sample}/clean/{sample}_R1.clean.fastq",
+    out2="data/{sample}/clean/{sample}_R2.clean.fastq"
   log:
-        "{sample}/logs/trim.log"
+        "data/{sample}/logs/trim.log"
   params:
         adapters=config["params"]["adapters"],
         bbduk=config["params"]["bbduk"]
@@ -15,13 +15,13 @@ rule bbduk:
       """
       module purge
       module load bbmap/38.90
-      cat {wildcards.sample}/fastq/*R1* > {wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq
-      cat {wildcards.sample}/fastq/*R2* > {wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq
+      cat data/{wildcards.sample}/fastq/*R1* > data/{wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq
+      cat data/{wildcards.sample}/fastq/*R2* > data/{wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq
       bbduk.sh \
         threads={threads} \
         -Xmx100g \
-        in={wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq \
-        in2={wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq \
+        in=data/{wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq \
+        in2=data/{wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq \
         out={output.out1} \
         out2={output.out2} \
         ref={params.adapters} \

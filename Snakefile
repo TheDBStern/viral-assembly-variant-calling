@@ -13,10 +13,10 @@ configfile: "config.yaml"
 
 rule all:
   input:
-    expand("{sample}/ec/{sample}_R1.clean.ec.fastq.gz", sample=config["samples"]),
-    expand("{sample}/ec/{sample}_R2.clean.ec.fastq.gz", sample=config["samples"]),
+    expand("data/{sample}/{sample}.consensus.fa", sample=config["samples"])
 
 ##### load rules #####
 
 include: "rules/bbduk.smk"
 include: "rules/spades_ec.smk"
+include: "rules/consiter.smk"
