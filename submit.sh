@@ -20,7 +20,7 @@ snake_log=$PWD/log/snake_log
 mkdir -p $snake_log
 
 # create qsub command
-sbcmd="qsub -l {cluster.mem} -l avx2 -pe threaded {cluster.threads} -e $snake_log -o $snake_log "
+sbcmd="qsub -l {cluster.mem} -pe threaded {cluster.threads} -e $snake_log -o $snake_log "
 
 module load snakemake
 

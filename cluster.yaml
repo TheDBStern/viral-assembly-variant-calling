@@ -1,3 +1,19 @@
-trim:
+bbduk:
   threads: 16
-  mem: h_vmem=12G
+  mem: h_vmem=8G
+
+cliquesnv:
+  threads: 16
+  mem: h_vmem=8G
+
+consiter:
+  threads: 16
+  mem: h_vmem=8G
+
+spades_ec:
+  threads: 16
+  mem: h_vmem=8G
+
+lofreq:
+  threads: 1
+  mem: h_vmem=50G,avx2
