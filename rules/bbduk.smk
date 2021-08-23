@@ -11,10 +11,10 @@ rule bbduk:
         adapters=config["params"]["adapters"],
         bbduk=config["params"]["bbduk"]
   threads: config["threads"]["bbduk"]
+  conda:
+        "../envs/bbduk.yaml"
   shell:
       """
-      module purge
-      module load bbmap/38.90
       cat data/{wildcards.sample}/fastq/*R1* > data/{wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq
       cat data/{wildcards.sample}/fastq/*R2* > data/{wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq
       bbduk.sh \
