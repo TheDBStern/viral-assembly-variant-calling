@@ -11,11 +11,11 @@ rule spades_ec:
   threads: config["threads"]["spades_ec"]
   log:
     "data/{sample}/logs/spades_ec.log"
+  conda:
+    "../envs/spades.yaml"
 
   shell:
       """
-      module purge
-      module load spades/3.15.2
       spades.py --only-error-correction \
           -t {threads} \
           -1 {input.in1} \

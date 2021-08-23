@@ -12,18 +12,13 @@ rule consiter:
     ref=config["params"]["ref"],
     consiter=config["params"]["consiter"]
   threads: config["threads"]["consiter"]
+  conda:
+    "../envs/consiter.yaml"
   log:
     "data/{sample}/logs/consiter.log"
 
   shell:
       """
-      module purge
-      module load python/3.7.3-foss-2016b
-      module load gatk/4.2.0.0-Java-1.8.0_92
-      module load picard/2.22.7-Java-1.8.0_92
-      module load samtools/1.9-goolf-1.7.20
-      module load bowtie2/2.4.2-Python-3.6.12
-
       python ConsIter/ConsIter.py \
               -ref {params.ref} \
               -t {threads} \
