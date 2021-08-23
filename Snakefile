@@ -8,13 +8,15 @@ min_version("5.1.2")
 
 configfile: "config.yaml"
 
+samples = pd.read_csv(config["samples"])
+samples.set_index("sample", drop=False, inplace=True)
 
 ##### target rules #####
 
 rule all:
   input:
-    expand("data/{sample}/{sample}.lofreq.vcf", sample=config["samples"]),
-    expand("data/{sample}/{sample}.haplotypes.cliquesnv.fasta", sample=config["samples"])
+    expand("data/{sample}/{sample}.lofreq.vcf", sample=samples.index),
+    expand("data/{sample}/{sample}.haplotypes.cliquesnv.fasta", sample=samples.index)
 
 ##### load rules #####
 

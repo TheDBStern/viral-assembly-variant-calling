@@ -1,6 +1,5 @@
 #names of sample directories containing the fastq directories
-samples:
-    ["SRR8209080"]
+samples: "samples.csv"
 
 params:
     adapters: "ref/adapters.fa"
