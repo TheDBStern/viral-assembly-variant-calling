@@ -12,6 +12,9 @@ samples = pd.read_csv(config["samples"])
 samples.set_index("sample", drop=False, inplace=True)
 
 ##### target rules #####
+myinput = list()
+
+if config["samples"]
 
 rule all:
   input:
@@ -25,3 +28,5 @@ include: "rules/spades_ec.smk"
 include: "rules/consiter.smk"
 include: "rules/lofreq.smk"
 include: "rules/cliquesnv.smk"
+include: "rules/spades_assemble.smk"
+include: "rules/ragtag.smk"

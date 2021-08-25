@@ -17,3 +17,7 @@ spades_ec:
 lofreq:
   threads: 1
   mem: h_vmem=50G,avx2
+
+spades_assemble:
+  threads: 16
+  mem: h_vmem=8G
