@@ -1,6 +1,7 @@
 #names of sample directories containing the fastq directories
 samples: "samples.csv"
 
+## Uncomment the pipeline of choice
 #pipeline: "mapping"
 pipeline: "denovo"
 
@@ -9,12 +10,10 @@ params:
     bbduk: "ktrim=r k=23 mink=11 hdist=1 qtrim=w trimq=10 minlen=36 entropy=0.01 entropywindow=50 entropyk=5 tbo"
     ref: "ref/HIV_B.K03455.HXB2.fasta"
     consiter: "-i 5 -p 1 -xmx 50"
-    trinity: "--max_memory 50G --min_contig_length 100"
 
 threads:
     bbduk: 16
     spades_ec: 16
     consiter: 16
-    trinity: 16
     spades_assemble: 16
     ragtag: 16

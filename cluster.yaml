@@ -21,3 +21,11 @@ lofreq:
 spades_assemble:
   threads: 16
   mem: h_vmem=8G
+
+ragtag:
+  threads: 16
+  mem: h_vmem=8G
+
+clean_ragtag:
+  threads: 1
+  mem: h_vmem=1G

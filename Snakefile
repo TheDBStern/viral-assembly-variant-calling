@@ -12,10 +12,6 @@ samples = pd.read_csv(config["samples"])
 samples.set_index("sample", drop=False, inplace=True)
 
 ##### target rules #####
-myinput = list()
-
-if config["samples"]
-
 rule all:
   input:
     expand("data/{sample}/{sample}.lofreq.vcf", sample=samples.index),

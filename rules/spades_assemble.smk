@@ -1,7 +1,7 @@
 shell.prefix("set -eo pipefail; ")
 
 
-rule spaces_assemble:
+rule spades_assemble:
   input:
     in1="data/{sample}/ec/{sample}_R1.clean.ec.fastq.gz",
     in2="data/{sample}/ec/{sample}_R2.clean.ec.fastq.gz"
