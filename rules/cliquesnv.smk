@@ -14,14 +14,19 @@ rule cliquesnv:
 
   shell:
       """
-      module purge
+      bamtools split -in {input} -reference
 
+      for i in data/{wildcards.sample}/*REF*.bam;
+      do
       cliquesnv -m snv-illumina \
                 -threads 8 \
-                -in {input} \
+                -in $i \
                 -fdf extended \
-                -outDir "data/{wildcards.sample}/" \
+                -outDir data/{wildcards.sample}/cliquesnv_out \
                 > {log} 2>&1
-      mv data/{wildcards.sample}/{wildcards.sample}.bt2.rmdup.fasta {output}
-      rm data/{wildcards.sample}/{wildcards.sample}.bt2.rmdup.json
+      mv data/{wildcards.sample}/cliquesnv_out/*.fasta data/{wildcards.sample}/
+      rm -rf data/{wildcards.sample}/cliquesnv_out/cliquesnv_out
+      done
+
+      cat data/{wildcards.sample}/{wildcards.sample}.bt2*.fasta > {output}
       """

@@ -2,13 +2,13 @@
 samples: "samples.csv"
 
 ## Uncomment the pipeline of choice
-#pipeline: "mapping"
-pipeline: "denovo"
+pipeline: "mapping"
+#pipeline: "denovo"
 
 params:
     adapters: "ref/adapters.fa"
     bbduk: "ktrim=r k=23 mink=11 hdist=1 qtrim=w trimq=10 minlen=36 entropy=0.01 entropywindow=50 entropyk=5 tbo"
-    ref: "ref/HIV_B.K03455.HXB2.fasta"
+    ref: "ref/HIV_B.K03455.HXB2.amplicons.fasta"
     consiter: "-i 5 -p 1 -xmx 50"
 
 threads:
