@@ -2,10 +2,10 @@
 
 This is a Snakemake pipeline to generate a consensus sequence and call variants (SNPs and haplotypes) using viral amplicon short-read Illumina data and a reference genome.
 
-download this repository with 
+Download this repository with 
 `git clone --recursive https://github.niaid.nih.gov/sterndb/viral-assembly-variant-calling`
 
-Snakemake pipeline to assemble a viral consensus sequence, and optionally call SNPs and haplotypes.
+The `ref` directory should contain adapter sequences and the reference genome. If targeted amplicon sequencing was performed, a multifasta file with each targeted region can be provided.
 
 The data directory should have a separate directory for each sample. Multiple fastq files per sample will be concatenated prior to analysis. All fastq files should end with either _R1.fastq or _R2.fastq.
 
@@ -34,8 +34,7 @@ data
 ```
 
 Usage:  
-1. Edit config file to indicate reference-mapping or denovo approach  
-2. 
+1. Edit config file to indicate reference-mapping or denovo approach, file with reference genome, and file with adapter sequences.
 
 
 On NIAID HPC Locus, edit the submit.sh file to indicate your email address.
