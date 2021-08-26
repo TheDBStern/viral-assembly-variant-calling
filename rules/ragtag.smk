@@ -15,6 +15,14 @@ rule ragtag:
 
   shell:
       """
+      ragtag.py correct \
+                -f 100 \
+                -b 100 \
+                -o data/{wildcards.sample}/ragtag \
+                -t {threads} \
+                {params} \
+                {input} > {log} 2>&1
+
       ragtag.py scaffold \
                 -C \
                 -f 100 \
@@ -23,7 +31,7 @@ rule ragtag:
                 -o data/{wildcards.sample}/ragtag \
                 -t {threads} \
                 {params} \
-                {input} > {log} 2>&1
+                data/{wildcards.sample}/ragtag/ragtag.correct.fasta > {log} 2>&1
       """
 
 rule clean_ragtag:

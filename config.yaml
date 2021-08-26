@@ -2,8 +2,8 @@
 samples: "samples.csv"
 
 ## Uncomment the pipeline of choice
-pipeline: "mapping"
-#pipeline: "denovo"
+#pipeline: "mapping"
+pipeline: "denovo"
 
 params:
     adapters: "ref/adapters.fa"
