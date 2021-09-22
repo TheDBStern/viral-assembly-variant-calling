@@ -8,3 +8,4 @@ dependencies:
  - gatk4=4.2.2.0-0
  - picard=2.26.0-0
  - samtools=1.13-0
+ - bedtools=2.30.0
