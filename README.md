@@ -5,13 +5,14 @@ This is a Snakemake pipeline to generate a consensus sequence and call variants 
 Download this repository with 
 `git clone --recursive https://github.niaid.nih.gov/sterndb/viral-assembly-variant-calling`
 
-The `ref` directory should contain adapter sequences and the reference genome. If targeted amplicon sequencing was performed, a multifasta file with each targeted region can be provided.
-
-The data directory should have a separate directory for each sample. Multiple fastq files per sample will be concatenated prior to analysis. All fastq files should end with either _R1.fastq or _R2.fastq.
 
 There are two pipeline options:
 1. Reference-mapping approach. Map error-corrected reads to a reference genome and generate a consensus sequence based on majority variants. Best if the data are expected to be quite similar to the reference genome.
 2. De-novo assembly and scaffolding. Assemble contigs directly from error-corrected reads. Scaffold the contigs (i.e. order and orient) based on alignment to a reference genome. Best if the data are expected to be quite divergent from the reference genome and may have large structural variants.
+
+The `ref` directory should contain adapter sequences and the reference genome. If targeted amplicon sequencing was performed, a multifasta file with each targeted region can be provided. 
+
+The data directory should have a separate directory for each sample. Multiple fastq files per sample will be concatenated prior to analysis. All fastq files should end with either _R1.fastq or _R2.fastq.
 
 An example directory structure is below:
 
@@ -34,7 +35,8 @@ data
 ```
 
 Usage:  
-Edit config file to indicate reference-mapping or denovo approach and files with reference genome, adapter sequences, and (optionally) primer sequences.
+Edit config file to indicate reference-mapping or denovo approach and files with reference genome, adapter sequences, and (optionally) primer sequences.  
+Edit the samples.csv file with the names of the samples in the data directory.
 
 On NIAID HPC Locus, edit the submit.sh file to indicate your email address and submit with `qsub submit.sh`. Be sure to edit the cluster.yaml file to indicate requested resources.  
 If running locally, run: `snakemake --use-conda all`
