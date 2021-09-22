@@ -36,5 +36,5 @@ data
 Usage:  
 Edit config file to indicate reference-mapping or denovo approach and files with reference genome, adapter sequences, and (optionally) primer sequences.
 
-On NIAID HPC Locus, edit the submit.sh file to indicate your email address and submit with `qsub submit.sh`. Be sure to edit the cluster.yaml file to indicate requested resources.
+On NIAID HPC Locus, edit the submit.sh file to indicate your email address and submit with `qsub submit.sh`. Be sure to edit the cluster.yaml file to indicate requested resources.  
 If running locally, run: `snakemake --use-conda all`
