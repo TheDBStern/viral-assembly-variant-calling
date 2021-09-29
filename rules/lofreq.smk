@@ -12,7 +12,7 @@ rule lofreq:
     "../envs/lofreq.yaml"
   shell:
       """
-      mkdir data/{wildcards.sample}/lofreq
+      mkdir data/{wildcards.sample}/lofreq || true
 
       samtools view \
             -b \
