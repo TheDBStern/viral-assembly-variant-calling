@@ -16,8 +16,8 @@ rule bbduk:
         "../envs/bbduk.yaml"
   shell:
       """
-      rm data/{wildcards.sample}/fastq/*.cat.fastq 2>/dev/null
-      gunzip data/{wildcards.sample}/fastq/*.fastq.gz 2>/dev/null
+      rm data/{wildcards.sample}/fastq/*.cat.fastq 2>/dev/null || true
+      gunzip data/{wildcards.sample}/fastq/*.fastq.gz 2>/dev/null || true
       cat data/{wildcards.sample}/fastq/*1.fastq* > data/{wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq
       cat data/{wildcards.sample}/fastq/*2.fastq* > data/{wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq
 
