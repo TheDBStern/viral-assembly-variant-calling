@@ -16,8 +16,10 @@ rule bbduk:
         "../envs/bbduk.yaml"
   shell:
       """
-      cat data/{wildcards.sample}/fastq/*R1* > data/{wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq
-      cat data/{wildcards.sample}/fastq/*R2* > data/{wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq
+      rm data/{wildcards.sample}/fastq/*.cat.fastq 2>/dev/null
+      gunzip data/{wildcards.sample}/fastq/*.fastq.gz 2>/dev/null
+      cat data/{wildcards.sample}/fastq/*1.fastq* > data/{wildcards.sample}/fastq/{wildcards.sample}_1.cat.fastq
+      cat data/{wildcards.sample}/fastq/*2.fastq* > data/{wildcards.sample}/fastq/{wildcards.sample}_2.cat.fastq
 
       if [ -z {params.primers} ]
       then
