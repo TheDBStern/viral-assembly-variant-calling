@@ -3,7 +3,7 @@
 This is a Snakemake pipeline to generate a consensus sequence and call variants (SNPs and haplotypes) using viral amplicon short-read Illumina data and a reference genome. Much of the work is performed by the Python script [ConsIter.py](https://github.niaid.nih.gov/sterndb/ConsIter) which iterates mapping of reads to a reference genome, calling variants, and updating the reference genome until there is no improvement in mapping rate. It then masks bases below a specified coverage threshold.
 
 Download this repository with 
-`git clone --recursive https://github.niaid.nih.gov/sterndb/viral-assembly-variant-calling`
+`git clone --recursive https://github.com/TheDBStern/viral-assembly-variant-calling`
 
 
 There are two pipeline options:
@@ -38,5 +38,4 @@ Usage:
 Edit config file to indicate reference-mapping or denovo approach and files with reference genome, adapter sequences, and (optionally) primer sequences.  
 Edit the samples.csv file with the names of the samples in the data directory.
 
-On NIAID HPC Locus, edit the submit.sh file to indicate your email address and submit with `qsub submit.sh`. Be sure to edit the cluster.yaml file to indicate requested resources.  
 If running locally, run: `snakemake --use-conda all`
